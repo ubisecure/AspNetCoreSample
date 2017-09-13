@@ -1,11 +1,15 @@
+[CmdletBinding()]
+param(
+    [parameter()] [uri] $Uri = "https://sso.example.com:8443",
+    [parameter()] [uri] $ManageUri = $Uri   
+)
+
 Import-Module "oauth2"
 Import-Module "sso-api-v2"
 
-$sso = "https://sso.example.com:8443"
+New-OAuthClientConfig -Name "bootstrap.json" | New-SSOLogon -Uri $Uri -ManageUri $ManageUri -Code:$false -Username "system"
 
-New-OAuthClientConfig -Name "bootstrap.json" | New-SSOLogon -Uri $sso -Code:$false -Username "system"
-
-Get-OAuthMetadata -Authority "$sso/uas" | ConvertTo-Json | Set-Content -Path "openid-configuration.json" -Force
+Get-OAuthMetadata -Authority "$Uri/uas" | ConvertTo-Json | Set-Content -Path "openid-configuration.json" -Force
 
 $password1 = Get-SSOObject -Type "method" "password.1" -ErrorAction Stop
 $allusers = Get-SSOObject -Type "group" "System","Authenticated Users" -ErrorAction Stop
