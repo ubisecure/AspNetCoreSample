@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [parameter()] [uri] $Uri = "https://sso.example.com:8443",
-    [parameter()] [uri] $ManageUri = $Uri   
+    [parameter()] [uri] $ManageUri = $Uri,
+    [parameter()] [uri] $RedirectUri = "http://localhost:19282/signin-oidc"
 )
 
 Import-Module "oauth2"
@@ -27,7 +28,7 @@ $app | Set-SSOLink -LinkName "allowedTo" -Link $users | Out-Null
 $app | Set-SSOLink -Link $policy | Out-Null
 $app | Set-SSOLink -Link $password1 -Enabled | Out-Null
 
-$request = @{"redirect_uris"=@("http://localhost:19282/signin-oidc")} | ConvertTo-Json
+$request = @{"redirect_uris"=@($RedirectUri)} | ConvertTo-Json
 $response = $app | Set-SSOAttribute -Name "metadata" -ContentType "application/json" -Body $request
 
 $response | ConvertTo-Json | Set-Content -Path "client-config.json" -Force
