@@ -64,8 +64,7 @@ One thing to note is that when configured this way the OpenID Connect client wil
 
 ```c#
             .AddOpenIdConnect(options =>
-
-{
+            {
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = null;
                 options.DisableTelemetry = true;
