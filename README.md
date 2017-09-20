@@ -48,7 +48,7 @@ The following code reads the json configuration files and makes the configuratio
         public IConfigurationRoot ClientConfig { get; set; }
 ```
 
-This indicates OpenID Connect is used to authenticate new anonymous users trying to access the application. Cookies are used to persist an authenticated session. Do review details of [ASP.NET Core cookie authentication](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.cookies) before going into production: how large will the cookie or cookies become and how is their integrity protected?
+This indicates [OpenID Connect](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.openidconnect) is used to authenticate new anonymous users trying to access the application. Cookies are used to persist an authenticated session. Do review details of [ASP.NET Core cookie authentication](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.cookies) before going into production: how large will the cookie or cookies become and how is their integrity protected?
 
 ```c#
             .AddAuthentication(sharedOptions =>
@@ -109,6 +109,8 @@ Use Visual Studio 2017 to launch AspNetCoreSample application on http://localhos
 
 ## References
 
+* https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.openidconnect
+* https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.cookies
 * http://openid.net/specs/openid-connect-discovery-1_0.html
 * http://openid.net/specs/openid-connect-registration-1_0.html
 * http://openid.net/specs/openid-connect-core-1_0.html
