@@ -1,4 +1,4 @@
- # ASP.NET Core 2.0 and Ubisecure SSO integration with OpenID Connect
+# ASP.NET Core 2.0 and Ubisecure SSO integration with OpenID Connect
 
 ## Discovery and client registration
 
@@ -64,7 +64,8 @@ One thing to note is that when configured this way the OpenID Connect client wil
 
 ```c#
             .AddOpenIdConnect(options =>
-            {
+
+{
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = null;
                 options.DisableTelemetry = true;
@@ -110,6 +111,7 @@ Use Visual Studio 2017 to launch AspNetCoreSample application on http://localhos
 ## References
 
 * https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.openidconnect
+* https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.builder.openidconnectoptions
 * https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.cookies
 * http://openid.net/specs/openid-connect-discovery-1_0.html
 * http://openid.net/specs/openid-connect-registration-1_0.html
