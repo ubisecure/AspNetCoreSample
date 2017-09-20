@@ -1,4 +1,4 @@
-# ASP.NET Core 2.0 and Ubisecure SSO integration with OpenID Connect
+ # ASP.NET Core 2.0 and Ubisecure SSO integration with OpenID Connect
 
 ## Discovery and client registration
 
@@ -48,7 +48,7 @@ The following code reads the json configuration files and makes the configuratio
         public IConfigurationRoot ClientConfig { get; set; }
 ```
 
-This indicates OpenID Connect is used to authenticate new anonymous users trying to access the application. Cookies are used to persist an authenticated session.
+This indicates OpenID Connect is used to authenticate new anonymous users trying to access the application. Cookies are used to persist an authenticated session. Do review details of [ASP.NET Core cookie authentication](https://docs.microsoft.com/en-us/aspnet/core/api/microsoft.aspnetcore.authentication.cookies) before going into production: how large will the cookie or cookies become and how is their integrity protected?
 
 ```c#
             .AddAuthentication(sharedOptions =>
