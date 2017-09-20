@@ -88,7 +88,7 @@ The final piece from Configure method disables anonymous access and requires all
 
 ### Index.cshtml
 
-The following generates a simple html list with showing all claims received from Ubisecure SSO Server
+The following generates a simple html list showing all claims received from Ubisecure SSO Server
 
 ```cshtml
 @{
