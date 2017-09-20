@@ -58,9 +58,9 @@ This indicates OpenID Connect is used to authenticate new anonymous users trying
             })
 ```
 
-Here I'm setting up the built-in OpenID Connect client of ASP.NET Core. This is all quite easy to understand. I want to use Authorization Code flow, I disable some built-in features and fetch information from my configuration files.
+Here I'm setting up the built-in OpenID Connect client of ASP.NET Core. This is all quite easy to understand. I want to use Authorization Code flow, I adjust some built-in features and fetch information from my configuration files.
 
-One thing to note is that when configured this way the OpenID Connect client will fetch a fresh copy of Provider metadata and Provider public keys. You should carefully consider if this model satisfies the threat model of your application.
+One thing to note is that when configured this way the OpenID Connect client will use http to fetch fresh copies of Provider metadata and Provider public keys. You should carefully consider if this satisfies the trust and threat model of your application.
 
 ```c#
             .AddOpenIdConnect(options =>
@@ -88,7 +88,20 @@ The final piece from Configure method disables anonymous access and requires all
 
 ### Index.cshtml
 
-TODO
+The following generates a simple html list with showing all claims received from Ubisecure SSO Server
+
+```cshtml
+@{
+}
+<h1>Welcome</h1>
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt><b>@claim.Type</b></dt>
+        <dd><i>@claim.Value</i></dd>
+    }
+</dl>
+```
 
 ## Launching
 
