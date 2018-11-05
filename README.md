@@ -1,4 +1,4 @@
-# ASP.NET Core 2.0 and Ubisecure SSO integration with OpenID Connect
+# ASP.NET Core 2.1 and Ubisecure SSO integration with OpenID Connect
 
 ## Discovery and client registration
 
@@ -6,9 +6,9 @@
 
 The OpenID Connect Provider metadata of your Ubisecure SSO Server. 
 
-Provider metadata is published at a well known URI derived from the name of the Provider by concatenating **/.well-known/openid-configuration**. For example, if the name of your Ubisecure SSO Server is **https://sso.example.com/uas** then the URI for Provider metadata is
+Provider metadata is published at a well known URI derived from the name of the Provider by concatenating **/.well-known/openid-configuration**. For example, if the name of your Ubisecure SSO Server is **https://login.example.ubidemo.com/uas** then the URI for Provider metadata is
 
-https://sso.example.com/uas/.well-known/openid-configuration
+https://login.example.ubidemo.com/uas/.well-known/openid-configuration
 
 ### client-config.json
 
