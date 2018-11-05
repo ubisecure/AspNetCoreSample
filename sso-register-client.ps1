@@ -8,13 +8,21 @@ param(
 Import-Module "oauth2"
 Import-Module "sso-api-v2"
 
-$registration = @{
-"ClientId"="public"
-"ClientSecret"=(ConvertTo-SecureString -String "public" -AsPlainText -Force)
-"RedirectUri"="http://localhost/public"
+$public_client_config = @"
+{
+    "redirect_uris":  [
+                          "http://localhost/public",
+                          "http://localhost/spa.html"
+                      ],
+    "grant_types":  [
+                        "authorization_code"
+                    ],
+    "client_id":  "public",
+    "client_secret":  "public"
 }
+"@
 
-New-OAuthClientConfig @registration | New-SSOLogon -Uri $Uri -ManageUri $ManageUri -Browser "default" 
+New-OAuthClientConfig -Json $public_client_config | New-SSOLogon -Uri $Uri -ManageUri $ManageUri -Browser "default" 
 
 Get-OAuthMetadata -Authority ([uri]::new($Uri, "/uas")) | ConvertTo-Json | Set-Content -Path "openid-configuration.json" -Force
 
