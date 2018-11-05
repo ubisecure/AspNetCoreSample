@@ -44,6 +44,11 @@ namespace AspNetCoreSample
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = null;
                 options.DisableTelemetry = true;
+#if NOT
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.TokenValidationParameters.RequireSignedTokens = true;
+                options.TokenValidationParameters.ValidateLifetime = false;
+#endif
                 options.Authority = ProviderConfig["issuer"];
                 options.ClientId = ClientConfig["client_id"];
                 options.ClientSecret = ClientConfig["client_secret"];
